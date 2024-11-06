@@ -16,6 +16,16 @@
         </div>
 
         <div class="mb-3">
+            <label for="type_id" class="form-label text-light">Tipo di Progetto</label>
+            <select name="type_id" id="type_id" class="form-select text-white" required>
+                <option value="">Seleziona un Tipo</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}" {{ $project->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label for="description" class="form-label text-light">Descrizione</label>
             <textarea class="form-control text-white" id="description" name="description">{{ $project->description }}</textarea>
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,7 +35,9 @@ class ProjectController extends Controller
         return redirect()->route('admin.projects.index')->with('error', 'Accesso negato, non possiedi i privilegi adatti per questa funzione');
     }
 
-    return view('admin.projects.create');
+    $types = Type::all();
+
+    return view('admin.projects.create', compact('types'));
 }
 
 
@@ -52,6 +55,7 @@ class ProjectController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'url' => 'nullable|url',
+            'type_id' => 'required|exists:types,id',
         ]);
 
         Project::create($validatedData);
@@ -76,8 +80,9 @@ class ProjectController extends Controller
     public function edit(string $id)
     {
         $project = Project::findOrFail($id);
+        $types = Type::all();
 
-    return view('admin.projects.edit', compact('project'));
+    return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**

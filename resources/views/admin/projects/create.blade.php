@@ -15,6 +15,16 @@
         </div>
 
         <div class="mb-3">
+            <label for="type_id" class="form-label text-light">Tipo di Progetto</label>
+            <select name="type_id" id="type_id" class="form-select text-white" required>
+                <option value="">Seleziona un Tipo</option>
+                @foreach($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label for="description" class="form-label text-light">Descrizione</label>
             <textarea name="description" id="description" class="form-control text-white" rows="5"></textarea>
         </div>
@@ -23,6 +33,7 @@
             <label for="url" class="form-label text-light">URL</label>
             <input type="url" name="url" id="url" class="form-control text-white">
         </div>
+
 
         <button type="submit" class="btn btn-primary">Salva Progetto</button>
     </form>

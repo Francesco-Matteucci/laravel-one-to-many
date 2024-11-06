@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-12 text-center my-4">
             <h1 class="text-light">Gestione dei Progetti</h1>
-            <p class="text-light">Qui puoi visualizzare, modificare e eliminare i tuoi progetti.</p>
+            <p class="text-light">Qui puoi visualizzare, modificare ed eliminare i progetti.</p>
         </div>
         <div class="col-md-12">
             <a href="{{ route('admin.projects.create') }}" class="btn btn-primary mb-3">Crea Nuovo Progetto</a>
@@ -36,6 +36,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Titolo</th>
+                                    <th>Tipo</th>
                                     <th>Azioni</th>
                                 </tr>
                             </thead>
@@ -44,6 +45,7 @@
                                     <tr>
                                         <td>{{ $project->id }}</td>
                                         <td>{{ $project->title }}</td>
+                                        <td>{{ $project->type ? $project->type->name : 'N/A' }}</td>
                                         <td>
                                             <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-info btn-sm">Visualizza</a>
                                             <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning btn-sm">Modifica</a>
