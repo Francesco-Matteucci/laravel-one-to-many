@@ -11,6 +11,7 @@
         <div class="card-body">
             <h5 class="card-title">Descrizione</h5>
             <p class="card-text">{{ $project->description }}</p>
+            <p class="card-text"><strong>Tipologia:</strong> {{ $project->type ? $project->type->name : 'Nessuna tipologia associata' }}</p>
             <a href="{{ $project->url }}" target="_blank" class="btn btn-primary">Vai al Progetto</a>
             <hr>
             <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning">Modifica</a>
